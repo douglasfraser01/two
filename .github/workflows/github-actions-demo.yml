@@ -6,7 +6,7 @@ jobs:
     steps:
       - run: echo " the job was automatically triggers by a ${{github.event_name}} event"
       - run: echo " this job is now running on a ${{ runner.os}} server hosted in github"
-      - run: echo " the name of branch ${{ github.ref}} and repo is ${{ github.repository}"
+      - run: echo " the name of branch ${{ github.ref}} and repo is ${{ github.repository}}"
       - name: check out rpo code
         uses: actions/checkout@v2
       - run: echo " the ${{ github.repository}} repo has been cloned to runner"
