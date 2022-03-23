@@ -38,6 +38,9 @@ for n, title, d in zip(range(131, 134), titles, data):
 plt.colorbar()
 plt.show()
 
+plt.tight_layout()
+plt.savefig("functions.png",dpi=120) 
+plt.close()
 
 # Now we have the temporal snapshots in the input matrix rows: we can easily create a new DMD instance and exploit it in order to compute the decomposition on the data. Since the snapshots must be arranged by columns, in this case we need to transpose the matrix.
 
@@ -60,19 +63,26 @@ for eig in dmd.eigs:
 
 dmd.plot_eigs(show_axes=True, show_unit_circle=True)
 
-
+plt.tight_layout()
+plt.savefig("eigs.png",dpi=120) 
+plt.close()
 # We can plot the modes and the dynamics:
 
 for mode in dmd.modes.T:
     plt.plot(x, mode.real)
     plt.title('Modes')
 plt.show()
+plt.tight_layout()
+plt.savefig("modes.png",dpi=120) 
+plt.close()
 
 for dynamic in dmd.dynamics:
     plt.plot(t, dynamic.real)
     plt.title('Dynamics')
 plt.show()
-
+plt.tight_layout()
+plt.savefig("dynamics.png",dpi=120) 
+plt.close()
 
 # Finally, we can reconstruct the original dataset as the product of modes and dynamics. We plot the evolution of each mode to emphasize their similarity with the input functions and we plot the reconstructed data.
 
@@ -85,8 +95,12 @@ for n, mode, dynamic in zip(range(131, 133), dmd.modes.T, dmd.dynamics):
 plt.subplot(133)
 plt.pcolor(xgrid, tgrid, dmd.reconstructed_data.T.real)
 plt.colorbar()
-
 plt.show()
+plt.tight_layout()
+plt.savefig("reconstruction.png",dpi=120) 
+plt.close()
+
+
 
 
 # We can also plot the absolute error between the approximated data and the original one.
