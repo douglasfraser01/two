@@ -102,7 +102,7 @@ plt.close()
 
 # Write scores to a file
 with open("metrics.txt", 'w') as outfile:
-        outfile.write('Eigenvalue {}: distance from unit circle {}'.format(eig, np.abs(np.sqrt(eig.imag**2+eig.real**2) - 1))))
+        outfile.write('Eigenvalue {}: distance from unit circle {}'.format(eig, np.abs(np.sqrt(eig.imag**2+eig.real**2) - 1)))
 
 
 # We can also plot the absolute error between the approximated data and the original one.
