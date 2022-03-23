@@ -17,9 +17,12 @@ jobs:
           pip install -r requirements.txt
           python dmd.py
           
+          
           cat metrics.txt >> report.md
           cml-publish functions.png --md >> report.md
           cml-publish eigs.png --md >> report.md
           cml-publish modes.png --md >> report.md
           cml-publish dynamics.png --md >> report.md
           cml-publish reconstruction.png --md >> report.md
+
+          cml-send-comment report.md
