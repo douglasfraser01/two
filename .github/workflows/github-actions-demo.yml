@@ -1,17 +1,16 @@
-name: Github Actions Demo
+name: Github DMD
 on: [push]
 jobs:
   Explore-Github-Actions:
     runs-on: ubuntu-latest
+    container: docker://dvcorg-py3:latest
     steps:
-      - run: echo " the job was automatically triggers by a ${{github.event_name}} event"
-      - run: echo " this job is now running on a ${{ runner.os}} server hosted in github"
-      - run: echo " the name of branch ${{ github.ref}} and repo is ${{ github.repository}}"
-      - name: check out rpo code
-        uses: actions/checkout@v2
-      - run: echo " the ${{ github.repository}} repo has been cloned to runner"
-      - run: echo " the workflow is now ready to test on the runner" 
-      - name: list files in repo
+
+      - uses: actions/checkout@v2
+      - name: dmd test
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ls ${{ github.workspace}}
-      - run: echo " job status is ${{job.status}}"
+          # Your ML workflow goes here
+          pip install -r requirements.txt
+          python dmd.py
